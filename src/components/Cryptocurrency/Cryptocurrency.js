@@ -6,12 +6,12 @@ const currency = (props) => {
 
     return (
         
-<Card
-featuredTitle={props.name}
-style={styles.featuredTitleStyle}>
+  <Card
+      featuredTitle={props.name}
+      style={styles.featuredTitleStyle}>
         
-          <Text style={{ marginBottom: 10 }}>
-            {'Read More..'}
+          <Text style={{ marginBottom: 10, textAlign: 'center' }}>
+            {props.name}
           </Text>
 
           <Divider style={{ backgroundColor: '#dfe6e9' }} />
@@ -19,8 +19,7 @@ style={styles.featuredTitleStyle}>
           <View
             style={{ flexDirection: 'row', justifyContent: 'space-between' }}
           >
-            <Text style={styles.noteStyle}>{"Hello"}</Text>
-            <Text style={styles.noteStyle}>{"HI"}</Text>
+            <Text style={styles.noteStyle}>{props.price}</Text>
           </View>
 
 
@@ -35,13 +34,16 @@ const styles = {
       margin: 5,
       fontStyle: 'italic',
       color: '#b2bec3',
-      fontSize: 10
+      fontSize: 10,
+      width: 70,
+      textAlign: 'center' 
     },
     featuredTitleStyle: {
       marginHorizontal: 5,
       textShadowColor: '#00000f',
       textShadowOffset: { width: 3, height: 3 },
-      textShadowRadius: 3
+      textShadowRadius: 3,
+      textAlign: 'center'
     }
   };
 

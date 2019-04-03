@@ -16,7 +16,7 @@ export default class App extends React.Component {
 
   // set the data returned to cryptos
   componentDidMount() {
-    axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,IOT&tsyms=USD')
+    axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,EOS,IOT,LTC,XRP,BCH&tsyms=USD')
       .then(res => {
         const cryptos = res.data;
         console.log(cryptos);
@@ -26,8 +26,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-      <Text>Coin Watch</Text>
+      <View style = {styles.container}>
+      <Text style = {{fontWeight: "bold", fontSize: 25}}>Coin Watch</Text>
      
       {Object.keys(this.state.cryptos).map((key) => (
             <Cryptocurrency
@@ -35,8 +35,6 @@ export default class App extends React.Component {
                 price = {formatter.format(this.state.cryptos[key].USD)}/>
             ))}
       
-
-
       </View>
     );
   }
@@ -50,14 +48,11 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  left: {
-   fontWeight: 'bold'
-  }
 
 });
 
