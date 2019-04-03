@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
-import NumberFormat from 'react-number-format';
-
-import { FormattedCurrency } from 'react-native-globalize';
+import Cryptocurrency from './src/components/Cryptocurrency/Cryptocurrency';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,13 +27,16 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text>Crypto Watch</Text>
-        {Object.keys(this.state.cryptos).map((key) => (
-          <View key = {key}>
-            <Text style={styles.left}>{key}</Text>
-            <Text>{formatter.format(this.state.cryptos[key].USD)}</Text>
-          </View>
-        ))}
+      <Text>Coin Watch</Text>
+     
+      {Object.keys(this.state.cryptos).map((key) => (
+            <Cryptocurrency
+                name = {key}
+                price = {formatter.format(this.state.cryptos[key].USD)}/>
+            ))}
+      
+
+
       </View>
     );
   }
@@ -59,3 +60,10 @@ const styles = StyleSheet.create({
   }
 
 });
+
+// {Object.keys(this.state.cryptos).map((key) => (
+//   <View key = {key}>
+//     <Text style={styles.left}>{key}</Text>
+//     <Text>{formatter.format(this.state.cryptos[key].USD)}</Text>
+//   </View>
+// ))}
