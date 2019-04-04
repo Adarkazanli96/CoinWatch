@@ -27,12 +27,13 @@ export default class App extends React.Component {
   render() {
     return (
       <View style = {styles.container}>
-      <Text style = {{fontWeight: "bold", fontSize: 25}}>Coin Watch</Text>
+      <Text style = {{fontWeight: "bold", fontSize: 30, color: 'white', fontFamily: 'CourierNewPS-BoldMT'}}>Coin Watch</Text>
      
       {Object.keys(this.state.cryptos).map((key) => (
             <Cryptocurrency
                 name = {key}
-                price = {formatter.format(this.state.cryptos[key].USD)}/>
+                price = {formatter.format(this.state.cryptos[key].USD)}
+                />
             ))}
       
       </View>
@@ -49,7 +50,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#353535',
     alignItems: 'center',
     justifyContent: 'center',
   },

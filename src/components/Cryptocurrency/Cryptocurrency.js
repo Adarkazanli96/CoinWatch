@@ -6,44 +6,52 @@ const currency = (props) => {
 
     return (
         
-  <Card
-      featuredTitle={props.name}
-      style={styles.featuredTitleStyle}>
-        
-          <Text style={{ marginBottom: 10, textAlign: 'center' }}>
+  <View style = {styles.card}>
+          <Text style={styles.name}>
             {props.name}
           </Text>
 
-          <Divider style={{ backgroundColor: '#dfe6e9' }} />
+          <Divider style={{ backgroundColor: '#FF0057' }} />
           
           <View
             style={{ flexDirection: 'row', justifyContent: 'space-between' }}
           >
-            <Text style={styles.noteStyle}>{props.price}</Text>
+            <Text style={styles.price}>{props.price}</Text>
           </View>
-
-
-        </Card>
+          
+        </View>
 
 
         );
 }
 
 const styles = {
-    noteStyle: {
+    price: {
       margin: 5,
       fontStyle: 'italic',
-      color: '#b2bec3',
-      fontSize: 10,
-      width: 70,
-      textAlign: 'center' 
+      fontWeight: 'bold',
+      fontSize: 20,
+      textAlign: 'center',
+      width: 300,
+      color: 'white'
     },
-    featuredTitleStyle: {
+    name: {
+      color: '#FF0057',
+      marginBottom: 10,
+      fontWeight: 'bold',
+      fontSize: 20,
+      textAlign: 'center'
+    },
+    card: {
       marginHorizontal: 5,
       textShadowColor: '#00000f',
       textShadowOffset: { width: 3, height: 3 },
       textShadowRadius: 3,
-      textAlign: 'center'
+      textAlign: 'center',
+      backgroundColor: '#262626',
+      marginTop: 20,
+      padding: 8,
+      borderRadius: 2
     }
   };
 
@@ -52,4 +60,12 @@ export default currency;
 /*<View>
         <Text>{props.name}</Text>
         <Text>{props.price}</Text>
-            </View> */
+            </View> 
+            
+            
+            featuredTitle={props.name}
+      image={{
+        uri: 'http://jmd.im/black_wallpapers/I/desktop/BLACK_I_desktop-1.jpg'
+      }}
+      featuredTitleStyle = {styles.card}>
+      */
