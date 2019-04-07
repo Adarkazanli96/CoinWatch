@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, RefreshControl } from 'react-native';
 import axios from 'axios';
 import Cryptocurrency from './src/components/Cryptocurrency/Cryptocurrency';
 
@@ -9,11 +9,22 @@ export default class App extends React.Component {
 
     // array to store fetched data
     this.state = {
-      cryptos: []
+      cryptos: [],
+      refreshing: false
     };
   }
 
   
+  _onRefresh = () => {
+    this.setState({refreshing: true});
+    axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,EOS,IOT,LTC,XRP,BCH&tsyms=USD')
+      .then(res => {
+        const cryptos = res.data;
+        console.log(cryptos);
+        // store fetched data to cryptos
+        this.setState({cryptos: cryptos, refreshing: false});
+      })
+  }
 
 
   componentDidMount() {
@@ -29,7 +40,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <ScrollView style = {{backgroundColor: '#353535'}}>
+      <ScrollView
+      style = {{backgroundColor: '#353535'}}
+      refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+        />
+      }
+      >
         <View style = {styles.container}>
           <Text style = {{fontWeight: "bold", fontSize: 30, color: 'white', fontFamily: 'CourierNewPS-BoldMT'}}>Coin Watch</Text>
      

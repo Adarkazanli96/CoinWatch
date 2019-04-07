@@ -26,9 +26,9 @@ const styles = {
       margin: 5,
       fontStyle: 'italic',
       fontWeight: 'bold',
-      fontSize: 20,
+      fontSize: 15,
       textAlign: 'center',
-      width: 300,
+      width: 90,
       color: 'white'
     },
     name: {
