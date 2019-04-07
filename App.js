@@ -57,6 +57,7 @@ export default class App extends React.Component {
                 name = {key} //name of cryptocurrency
                 price = {formatter.format(this.state.cryptos[key].USD)} //price it's worth
                 key = {key} // each child should have a key
+                url = {"https://www.cryptocompare.com/coins/" + key + "/overview/USD"}
                 />
           ))}
         </View>
@@ -81,10 +82,3 @@ const styles = StyleSheet.create({
   },
 
 });
-
-// {Object.keys(this.state.cryptos).map((key) => (
-//   <View key = {key}>
-//     <Text style={styles.left}>{key}</Text>
-//     <Text>{formatter.format(this.state.cryptos[key].USD)}</Text>
-//   </View>
-// ))}

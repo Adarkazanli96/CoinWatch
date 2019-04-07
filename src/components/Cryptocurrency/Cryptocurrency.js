@@ -5,18 +5,22 @@ import { Button, Card, Divider } from 'react-native-elements';
 const currency = (props) => {
 
   return (
-    <View style = {styles.card}>
-      <Text style={styles.name}>
-        {props.name}
-      </Text>
-      <Divider style={{ backgroundColor: '#FF0057' }} />
+    <TouchableHighlight
+        useForeground
+        onPress={() => Linking.openURL(props.url)}
+        style = {styles.card}
+      >
+        <View>
+          <Text style={styles.name}>
+              {props.name}
+          </Text>
+          <Divider style={{ backgroundColor: '#FF0057' }} />
           
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text style={styles.price}>{props.price}</Text>
-      </View>
-          
-    </View>
-
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text style={styles.price}>{props.price}</Text>
+          </View>
+        </View>
+      </TouchableHighlight>    
 
   );
 }
@@ -40,10 +44,6 @@ const styles = {
     },
     card: {
       marginHorizontal: 5,
-      textShadowColor: '#00000f',
-      textShadowOffset: { width: 3, height: 3 },
-      textShadowRadius: 3,
-      textAlign: 'center',
       backgroundColor: '#262626',
       marginTop: 20,
       padding: 8,
@@ -52,16 +52,3 @@ const styles = {
   };
 
 export default currency;
-
-/*<View>
-        <Text>{props.name}</Text>
-        <Text>{props.price}</Text>
-            </View> 
-            
-            
-            featuredTitle={props.name}
-      image={{
-        uri: 'http://jmd.im/black_wallpapers/I/desktop/BLACK_I_desktop-1.jpg'
-      }}
-      featuredTitleStyle = {styles.card}>
-      */
