@@ -1,28 +1,24 @@
 import React from 'react';
-import { View, Text, Linking, TouchableNativeFeedback, TouchableHighlight } from 'react-native';
+import {View, Text, Linking, TouchableNativeFeedback, TouchableHighlight } from 'react-native';
 import { Button, Card, Divider } from 'react-native-elements';
 
 const currency = (props) => {
 
-    return (
-        
-  <View style = {styles.card}>
-          <Text style={styles.name}>
-            {props.name}
-          </Text>
-
-          <Divider style={{ backgroundColor: '#FF0057' }} />
+  return (
+    <View style = {styles.card}>
+      <Text style={styles.name}>
+        {props.name}
+      </Text>
+      <Divider style={{ backgroundColor: '#FF0057' }} />
           
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-          >
-            <Text style={styles.price}>{props.price}</Text>
-          </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={styles.price}>{props.price}</Text>
+      </View>
           
-        </View>
+    </View>
 
 
-        );
+  );
 }
 
 const styles = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import axios from 'axios';
 import Cryptocurrency from './src/components/Cryptocurrency/Cryptocurrency';
 
@@ -7,6 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // array to store fetched data
     this.state = {
       cryptos: []
     };
@@ -14,33 +15,38 @@ export default class App extends React.Component {
 
   
 
-  // set the data returned to cryptos
+
   componentDidMount() {
+    //fetch data
     axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,EOS,IOT,LTC,XRP,BCH&tsyms=USD')
       .then(res => {
         const cryptos = res.data;
         console.log(cryptos);
+        // store fetched data to cryptos
         this.setState({cryptos: cryptos});
       })
   }
 
   render() {
     return (
-      <View style = {styles.container}>
-      <Text style = {{fontWeight: "bold", fontSize: 30, color: 'white', fontFamily: 'CourierNewPS-BoldMT'}}>Coin Watch</Text>
+      <ScrollView style = {{backgroundColor: '#353535'}}>
+        <View style = {styles.container}>
+          <Text style = {{fontWeight: "bold", fontSize: 30, color: 'white', fontFamily: 'CourierNewPS-BoldMT'}}>Coin Watch</Text>
      
-      {Object.keys(this.state.cryptos).map((key) => (
+          {Object.keys(this.state.cryptos).map((key) => (//within the view, print out the objects
             <Cryptocurrency
-                name = {key}
-                price = {formatter.format(this.state.cryptos[key].USD)}
+                name = {key} //name of cryptocurrency
+                price = {formatter.format(this.state.cryptos[key].USD)} //price it's worth
+                key = {key} // each child should have a key
                 />
-            ))}
-      
-      </View>
+          ))}
+        </View>
+      </ScrollView>
     );
   }
 }
 
+// formats the prices
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
